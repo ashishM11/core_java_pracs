@@ -2,7 +2,7 @@ package sortingAlgo;
 
 public class SelectionSort {
 
-	private int[] performSort(int[] numbers) {
+	public int[] performSort(int[] numbers) {
 		for(int outer=0;outer < numbers.length;outer++) {
 			int minPosition = outer; 
 			for(int inner=outer;inner< numbers.length;inner++) {
@@ -21,6 +21,7 @@ public class SelectionSort {
 		for(int num:performSort(numbers)) {
 			System.out.print("\t"+num);
 		}
+		System.out.println();
 	}
 	
 }

@@ -18,7 +18,7 @@ public class RunSortingApp {
 		System.out.println("-------- Enter Number for Sorting Algo ----------\n");
 		switch (new Scanner(System.in).nextInt()) {
 		case 1:
-
+			new BubbleSort().sortingInfo(numbers);
 			break;
 		case 2:
 			new SelectionSort().sortingInfo(numbers);
