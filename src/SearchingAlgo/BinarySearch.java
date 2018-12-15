@@ -24,7 +24,7 @@ public class BinarySearch {
 		
 		while(lowerIndex<=higerindex) {
 			if(numbers[middleIndex]==searchNum) {
-				System.out.println("Item found at "+ middleIndex +"index.");
+				System.out.println("Item found at "+ middleIndex +" index.");
 				break;
 			}else if(numbers[middleIndex]<searchNum) {
 				lowerIndex =middleIndex+1;

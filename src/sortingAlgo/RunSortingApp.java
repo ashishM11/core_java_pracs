@@ -27,8 +27,10 @@ public class RunSortingApp {
 			new InsertionSort().sortingInfo(numbers);
 			break;
 		case 4:
+			new QuickSort().sortingInfo(numbers);
 			break;
 		case 5:
+			new MergeSort().sortingInfo(numbers);
 			break;
 		default:
 			break;

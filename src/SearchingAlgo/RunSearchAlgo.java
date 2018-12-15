@@ -11,20 +11,30 @@ public class RunSearchAlgo {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		new SelectionSort().sortingInfo(numbers);
 		Long startTime, endTime;
 		System.out.println("Enter a Search Number from Array : ");
 		searchNum = new Scanner(System.in).nextInt();
-
-		System.out.println("***************** Start Binary Search ******************");
-		startTime = System.currentTimeMillis();
-		System.out.println("Logged Binary Search start time :" + startTime);
-		new BinarySearch().preformSearch(new SelectionSort().performSort(numbers), searchNum);
-		endTime = System.currentTimeMillis();
-		System.out.println("Logged Binary Search end time :" + endTime);
-		System.out.println("Total Time taken By Binary Search =>" + (endTime - startTime));
-		System.out.println("***************** End Binary Search ******************");
-
+		System.out.println("Press B for Binary search Or L for Linear Search \n");
+		String searchAlgo = new Scanner(System.in).next();
+		if("L".equalsIgnoreCase(searchAlgo)) {
+			System.out.println("***************** Start Linear Search ******************");
+			startTime = System.currentTimeMillis();
+			System.out.println("Logged Binary Search start time :" + startTime);
+			new LinearSearch().preformSearch(numbers, searchNum);
+			endTime = System.currentTimeMillis();
+			System.out.println("Logged Binary Search end time :" + endTime);
+			System.out.println("Total Time taken By Binary Search =>" + (endTime - startTime));
+			System.out.println("***************** End Linear Search ******************");
+		}else if("B".equalsIgnoreCase(searchAlgo)) {
+			System.out.println("***************** Start Binary Search ******************");
+			startTime = System.currentTimeMillis();
+			System.out.println("Logged Binary Search start time :" + startTime);
+			new BinarySearch().preformSearch(new SelectionSort().performSort(numbers), searchNum);
+			endTime = System.currentTimeMillis();
+			System.out.println("Logged Binary Search end time :" + endTime);
+			System.out.println("Total Time taken By Binary Search =>" + (endTime - startTime));
+			System.out.println("***************** End Binary Search ******************");
+		}
 	}
 
 }
