@@ -2,13 +2,33 @@ package thread_banking;
 
 public class BankingOperationsDAOImpl implements BankingOperationsDAO, Runnable {
 
+	private Customers customer;
+	private int amount;
+
+	public Customers getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customers customer) {
+		this.customer = customer;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
 	@Override
 	public void checkBalance(Customers customer) {
-		System.out.println(customer.getCustAcc().getBalance());
+		System.out.println("Your Current Balance is :" + customer.getCustAcc().getBalance());
 	}
 
 	@Override
 	public void withdrawAmmount(Customers customer, int amount) {
+		displayCustomerInfo(customer);
 		if (isBalanceSufficient(customer, amount)) {
 			customer.getCustAcc().setBalance(customer.getCustAcc().getBalance() - amount);
 			checkBalance(customer);
@@ -24,14 +44,13 @@ public class BankingOperationsDAOImpl implements BankingOperationsDAO, Runnable 
 
 	@Override
 	public void run() {
-		Customers customer = null;
-		int amount = 0;
-		withdrawAmmount(customer, amount);
+		synchronized(this) {
+			withdrawAmmount(customer, amount);
+		}
 	}
 
 	public void displayCustomerInfo(Customers customer) {
-		System.out.println("Customer Name is :"+customer.getCustName());
-		System.out.println("Customer Id is :"+customer.getCustId());
+		System.out.println("Customer Name is :" + customer.getCustName());
+		System.out.println("Customer Id is :" + customer.getCustId());
 	}
-
 }
