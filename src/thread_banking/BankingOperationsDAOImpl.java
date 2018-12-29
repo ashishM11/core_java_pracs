@@ -1,26 +1,17 @@
 package thread_banking;
 
-public class BankingOperationsDAOImpl implements BankingOperationsDAO, Runnable {
+public class BankingOperationsDAOImpl extends Thread implements BankingOperationsDAO{
 
 	private Customers customer;
 	private int amount;
 
-	public Customers getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customers customer) {
+	
+	public BankingOperationsDAOImpl(Customers customer, int amount) {
+		super();
 		this.customer = customer;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
+
 	@Override
 	public void checkBalance(Customers customer) {
 		System.out.println("Your Current Balance is :" + customer.getCustAcc().getBalance());
@@ -46,6 +37,7 @@ public class BankingOperationsDAOImpl implements BankingOperationsDAO, Runnable 
 	public void run() {
 		synchronized(this) {
 			withdrawAmmount(customer, amount);
+			this.notify();
 		}
 	}
 

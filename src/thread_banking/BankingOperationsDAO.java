@@ -1,6 +1,6 @@
 package thread_banking;
 
-public interface BankingOperationsDAO {
+public interface BankingOperationsDAO{
 
 	public void checkBalance(Customers customer);
 	public void withdrawAmmount(Customers customer,int amount);
